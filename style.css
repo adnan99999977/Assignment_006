@@ -1,3 +1,11 @@
 *{
       font-family: "Inter", sans-serif;
 }
+
+.active_category{
+      color: white;
+      background-color: rgba(21, 128, 61, 1);
+}
+.remove{
+      display: none;
+}

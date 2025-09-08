@@ -89,21 +89,26 @@
     </section>
 
     <!-- main section -->
-
+     
     <main class="max-w-full bg-[#dcf8e4ab] text-[rgba(31,41,55,1)]">
       <p class="text-2xl font-bold text-center pt-15">Choose Your Trees</p>
+      <span id="loading_div" class="loading hidden loading-spinner loading-xl m-auto flex justify-center mt-10"></span>
       <section
         class="main_container pt-10 w-[350px] lg:w-[94%] m-auto mt-6 flex flex-col lg:grid lg:grid-cols-5 gap-5"
       >
         <!--main left categories-->
         <aside class="category_side lg:col-span-1 w-full">
           <p class="font-bold text-xl mb-5">Categories</p>
-          <div id="categories_container" class="flex flex-col gap-3"></div>
+          
+          <div id="categories_container" class="flex flex-col gap-3">
+           
+          </div>
         </aside>
         <!-- main center cards  -->
         <section
           id="all_plants_container"
           class="center col-span-3 w-full flex flex-wrap gap-4"
+          
         ></section>
         <!-- main right cart -->
         <aside
@@ -113,12 +118,14 @@
           <!-- cart_card -->
           <div
             id="carts_container"
-            class="flex flex-col-reverse justify-center items-center"
+            class="flex flex-col-reverse justify-center items-center "
           ></div>
-          <div
-            id="total"
-            class="total flex justify-between p-1 mt-2 font-bold"
-          ></div>
+          </div>
+              <div class="">
+              <p>Total: 0
+              </p></div>
+          
+
         </aside>
       </section>
 
@@ -129,7 +136,7 @@
         class="about_container mt-15 lg:w-[70%] m-auto lg:flex lg:justify-between items-center gap-9 pb-30"
       >
         <div
-          class="img w-[250px] m-auto lg:w-[75%] shadow-md hover:scale-105 transition-transform rounded-2xl"
+          class="img w-[250px] m-auto lg:w-[75%] shadow-md hover:rotate-y-180   transform transition-transform duration-800  rounded-2xl"
         >
           <img src="./assets/about.png" alt="" />
         </div>

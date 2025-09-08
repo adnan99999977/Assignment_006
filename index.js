@@ -91,10 +91,19 @@ categoriesContainer.addEventListener("click", (e) => {
 
 // all plants load & display
 const allPlantsLoad = () => {
+  // spinner show
+  loadingDiv.classList.remove("hidden");
+
   fetch("https://openapi.programming-hero.com/api/plants")
     .then((res) => res.json())
-    .then((data) => allPlantsDisplay(data.plants));
+    .then((data) => allPlantsDisplay(data.plants))
+    .catch((err) => console.error("Error:", err))
+    .finally(() => {
+      // spinner hide
+      loadingDiv.classList.add("hidden");
+    });
 };
+
 const allPlantsDisplay = (allPlants) => {
   allPlantsContainer.innerHTML = "";
 

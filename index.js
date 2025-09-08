@@ -4,6 +4,7 @@ const myModalContainer = document.getElementById("my_modal");
 const modalInfoContainer = document.getElementById("modal_info_container");
 const cartsContainer = document.getElementById("carts_container");
 const loadingDiv = document.getElementById('loading_div')
+const totalContainer = document.getElementById('total_container')
 
 
 // all  categories load & display
@@ -109,7 +110,7 @@ const allPlantsDisplay = (allPlants) => {
              <p class="text-[12px] ">${plant.description}</p></div>
              <div class="price flex justify-between items-center">
                 <p class="p-2 font-bold text-[12px] bg-[rgba(220,252,231,1)] rounded-4xl text-[rgba(21,128,61,1)] ">${plant.category}</p>
-                <p class="plant_price font-bold">৳${plant.price}</p>
+                <p class="plant_price font-bold">৳<span>${plant.price}</span></p>
              </div>
              <button  class=" add_to_cart_btn cursor-pointer bg-[rgba(21,128,61,1)] rounded-3xl w-full text-white p-2 lg:p-1 mt-2 hover:bg-[rgba(29,181,61,1)] duration-200" >Add to Cart</button>
           </div>
@@ -156,7 +157,14 @@ allPlantsContainer.addEventListener("click", (e) => {
 });
 
 // cart and delete btn 
+let totalAmount = 0;
+
 const addToCartBtn = (info) => {
+  const priceValue = parseInt(info.price.replace("৳","")); 
+
+  totalAmount += priceValue;
+  totalContainer.querySelector("span").innerText = totalAmount;
+
   const createNewCart = document.createElement("div");
   createNewCart.innerHTML = `
          <div  class="cart_card p-4 lg:p-2 rounded-sm  flex justify-between items-center mb-4 w-[200px] m-auto bg-[rgba(240,253,244,1)] text-[#474646]">
@@ -169,23 +177,24 @@ const addToCartBtn = (info) => {
                      <i  class="fa-solid fa-xmark"></i>
                 </button>
                </div>
-              `;
+  `;
   cartsContainer.appendChild(createNewCart);
-  
-    const crossBtn = createNewCart.querySelector(".cross-btn");
-    crossBtn.addEventListener('click',()=>{
+
+  const crossBtn = createNewCart.querySelector(".cross-btn");
+  crossBtn.addEventListener('click',()=>{
        createNewCart.remove();
-    })
-  
+       totalAmount -= priceValue;
+       totalContainer.querySelector("span").innerText = totalAmount;
+  })
 };
 
 
 
 // all trees category 
 
-const allTreesCategory =('click',()=>{
-   allPlantsLoad();
-})
+function allTreesCategory() {
+  allPlantsLoad();
+}
 
 
 allPlantsLoad();

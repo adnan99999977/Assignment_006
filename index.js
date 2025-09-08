@@ -7,6 +7,7 @@ const loadingDiv = document.getElementById('loading_div')
 const totalContainer = document.getElementById('total_container')
 
 
+
 // all  categories load & display
 const categoriesLoad = () => {
   fetch("https://openapi.programming-hero.com/api/categories")
@@ -66,7 +67,7 @@ const displayPlantsByCatagory = (plants) => {
            <div class = "h-[87px] overflow-hidden">
              <p class="text-[12px]">${plant.description}</p></div>
              <div class="price flex justify-between items-center">
-                <p class="p-2 font-bold text-[12px] bg-[rgba(220,252,231,1)] rounded-4xl text-[rgba(21,128,61,1)] ">${plant.category}</p>
+                <p class="px-3 p-2 font-bold text-[12px] bg-[rgba(220,252,231,1)] rounded-4xl text-[rgba(21,128,61,1)] ">${plant.category}</p>
                 <p class="plant_price font-bold">৳${plant.price}</p>
              </div>
              <button  class=" add_to_cart_btn cursor-pointer bg-[rgba(21,128,61,1)] rounded-3xl w-full text-white p-2 lg:p-1 mt-2 hover:bg-[rgba(29,181,61,1)] duration-200" >Add to Cart</button>
@@ -109,7 +110,7 @@ const allPlantsDisplay = (allPlants) => {
             <div class="h-[87px] overflow-hidden">
              <p class="text-[12px] ">${plant.description}</p></div>
              <div class="price flex justify-between items-center">
-                <p class="p-2 font-bold text-[12px] bg-[rgba(220,252,231,1)] rounded-4xl text-[rgba(21,128,61,1)] ">${plant.category}</p>
+                <p class="px-3 p-2  font-bold text-[12px] bg-[rgba(220,252,231,1)] rounded-4xl text-[rgba(21,128,61,1)] ">${plant.category}</p>
                 <p class="plant_price font-bold">৳<span>${plant.price}</span></p>
              </div>
              <button  class=" add_to_cart_btn cursor-pointer bg-[rgba(21,128,61,1)] rounded-3xl w-full text-white p-2 lg:p-1 mt-2 hover:bg-[rgba(29,181,61,1)] duration-200" >Add to Cart</button>
@@ -160,6 +161,7 @@ allPlantsContainer.addEventListener("click", (e) => {
 let totalAmount = 0;
 
 const addToCartBtn = (info) => {
+    alert(`You added *${info.name}* in your cart 😊`)
   const priceValue = parseInt(info.price.replace("৳","")); 
 
   totalAmount += priceValue;
@@ -198,3 +200,34 @@ function allTreesCategory() {
 
 
 allPlantsLoad();
+
+
+
+function inputBtn (){
+
+const formFunBtn = document.getElementById('form_fun_btn')
+formFunBtn.addEventListener('click',()=>{
+    const inputName = document.getElementById('input_name').value
+   const inputValue = inputName
+   const selectElement = document.getElementById('select_value');
+  const selectedValue = selectElement.value; 
+  alert(` 😍 Thank you! ${inputValue} To donate ${selectedValue} `);
+})
+}
+inputBtn()
+
+function navBtn (){
+    const navBtn = document.getElementById('nav_btn');
+    navBtn.addEventListener('click',()=>{
+        alert('😊 CONGRATULATION A TREE PLANTED FOR YOUR CLICK')
+    })
+}
+navBtn()
+
+function bannerBtn (){
+    const bannerBtn = document.getElementById('banner_btn');
+    bannerBtn.addEventListener('click',()=>{
+        alert(' You Involved Successfully 👏')
+    })
+}
+bannerBtn()

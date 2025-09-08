@@ -35,15 +35,13 @@ const displayCategories = (categoriesList) => {
 categoriesLoad();
 
 
-
-
 // load plants by categories
 const categoryBtn = (id) => {
   loadingDiv.classList.remove("hidden");
   fetch(`https://openapi.programming-hero.com/api/category/${id}`)
     .then((res) => res.json())
     .then((data) => {
-      displayPlantsByCatagory(data.plants);
+      displayPlantsByCategory(data.plants);
     })
     .catch((err) => {
       console.error("Error:", err);
@@ -54,12 +52,12 @@ const categoryBtn = (id) => {
 };
 
 // display plants by categories
-const displayPlantsByCatagory = (plants) => {
+const displayPlantsByCategory = (plants) => {
   allPlantsContainer.innerHTML = "";
   plants.forEach((plant) => {
     const createCardByCategory = document.createElement("div");
     createCardByCategory.innerHTML = `
-      <div class="plant_card lg:w-60  bg-white rounded-lg p-5 lg:p-3 space-y-2 shadow-md cursor-pointer">
+      <div class="plant_card w-[87%] m-auto lg:w-60  bg-white rounded-lg p-5 lg:p-3 space-y-2 shadow-md cursor-pointer">
               <img class="rounded-md w-full h-[170px] m-auto
              lg:w-[210px] lg:h-[210px] object-cover
              " src="${plant.image}" alt="">
@@ -102,7 +100,7 @@ const allPlantsDisplay = (allPlants) => {
 
   allPlants.forEach((plant) => {
     const createPlantsCard = document.createElement("div");
-    createPlantsCard.innerHTML = ` <div class="plant_card lg:w-60  bg-white rounded-lg p-5 lg:p-3 space-y-2 shadow-md cursor-pointer">
+    createPlantsCard.innerHTML = ` <div class="plant_card w-[87%] m-auto lg:w-60  bg-white rounded-lg p-5 lg:p-3 space-y-2 shadow-md cursor-pointer">
               <img class="rounded-md w-full m-auto h-[170px]
              lg:w-[210px] lg:h-[210px] object-cover
              " src="${plant.image}" alt="">
@@ -119,7 +117,6 @@ const allPlantsDisplay = (allPlants) => {
     allPlantsContainer.appendChild(createPlantsCard);
   });
 };
-
 
 // show modal
 const showModal = (id) => {
@@ -190,18 +187,12 @@ const addToCartBtn = (info) => {
   })
 };
 
-
-
 // all trees category 
 
 function allTreesCategory() {
   allPlantsLoad();
 }
-
-
 allPlantsLoad();
-
-
 
 function inputBtn (){
 

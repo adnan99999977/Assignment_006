@@ -3,10 +3,8 @@ const allPlantsContainer = document.getElementById("all_plants_container");
 const myModalContainer = document.getElementById("my_modal");
 const modalInfoContainer = document.getElementById("modal_info_container");
 const cartsContainer = document.getElementById("carts_container");
-const loadingDiv = document.getElementById('loading_div')
-const totalContainer = document.getElementById('total_container')
-
-
+const loadingDiv = document.getElementById("loading_div");
+const totalContainer = document.getElementById("total_container");
 
 // all  categories load & display
 const categoriesLoad = () => {
@@ -16,13 +14,12 @@ const categoriesLoad = () => {
 };
 const displayCategories = (categoriesList) => {
   categoriesContainer.innerHTML = "";
-    const allTreesDiv = document.createElement("p");
+  const allTreesDiv = document.createElement("p");
   allTreesDiv.className =
     "categories_div cursor-pointer  hover:bg-[#51c57f9c] duration-300 rounded-sm p-2 mb-2 text-[rgba(31,41,55,1)] text-[16px]";
   allTreesDiv.innerText = "All Trees";
   allTreesDiv.onclick = () => allPlantsLoad();
   categoriesContainer.appendChild(allTreesDiv);
-
 
   categoriesList.forEach((category) => {
     const createNewCategoryList = document.createElement("div");
@@ -33,7 +30,6 @@ const displayCategories = (categoriesList) => {
   });
 };
 categoriesLoad();
-
 
 // load plants by categories
 const categoryBtn = (id) => {
@@ -71,7 +67,7 @@ const displayPlantsByCategory = (plants) => {
              <button  class=" add_to_cart_btn cursor-pointer bg-[rgba(21,128,61,1)] rounded-3xl w-full text-white p-2 lg:p-1 mt-2 hover:bg-[rgba(29,181,61,1)] duration-200" >Add to Cart</button>
           </div>
       `;
-     
+
     allPlantsContainer.appendChild(createCardByCategory);
   });
 };
@@ -85,8 +81,6 @@ categoriesContainer.addEventListener("click", (e) => {
   const oldList = document.querySelectorAll(".categories_div.active_category");
   oldList.forEach((old) => old.classList.remove("active_category"));
   clickedEl.classList.add("active_category");
-  
-   
 });
 
 // all plants load & display
@@ -150,7 +144,7 @@ const displayTreesDetails = (plant) => {
   modalInfoContainer.appendChild(createInfoModal);
 };
 
-// add to cart 
+// add to cart
 
 allPlantsContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("add_to_cart_btn")) {
@@ -159,16 +153,15 @@ allPlantsContainer.addEventListener("click", (e) => {
     const name = card.querySelector(".plant_name").innerText;
     const price = card.querySelector(".plant_price").innerText;
     addToCartBtn({ name, price });
-   
   }
 });
 
-// cart and delete btn 
+// cart and delete btn
 let totalAmount = 0;
 
 const addToCartBtn = (info) => {
-    alert(`You added *${info.name}* in your cart 😊`)
-  const priceValue = parseInt(info.price.replace("৳","")); 
+  alert(`You added *${info.name}* in your cart 😊`);
+  const priceValue = parseInt(info.price.replace("৳", ""));
 
   totalAmount += priceValue;
   totalContainer.querySelector("span").innerText = totalAmount;
@@ -189,45 +182,44 @@ const addToCartBtn = (info) => {
   cartsContainer.appendChild(createNewCart);
 
   const crossBtn = createNewCart.querySelector(".cross-btn");
-  crossBtn.addEventListener('click',()=>{
-       createNewCart.remove();
-       totalAmount -= priceValue;
-       totalContainer.querySelector("span").innerText = totalAmount;
-  })
+  crossBtn.addEventListener("click", () => {
+    createNewCart.remove();
+    totalAmount -= priceValue;
+    totalContainer.querySelector("span").innerText = totalAmount;
+  });
 };
 
-// all trees category 
+// all trees category
 
 function allTreesCategory() {
   allPlantsLoad();
 }
 allPlantsLoad();
 
-function inputBtn (){
-
-const formFunBtn = document.getElementById('form_fun_btn')
-formFunBtn.addEventListener('click',()=>{
-    const inputName = document.getElementById('input_name').value
-   const inputValue = inputName
-   const selectElement = document.getElementById('select_value');
-  const selectedValue = selectElement.value; 
-  alert(` 😍 Thank you! ${inputValue} To donate ${selectedValue} `);
-})
+function inputBtn() {
+  const formFunBtn = document.getElementById("form_fun_btn");
+  formFunBtn.addEventListener("click", () => {
+    const inputName = document.getElementById("input_name").value;
+    const inputValue = inputName;
+    const selectElement = document.getElementById("select_value");
+    const selectedValue = selectElement.value;
+    alert(` 😍 Thank you! ${inputValue} To donate ${selectedValue} `);
+  });
 }
-inputBtn()
+inputBtn();
 
-function navBtn (){
-    const navBtn = document.getElementById('nav_btn');
-    navBtn.addEventListener('click',()=>{
-        alert('😊 CONGRATULATION A TREE PLANTED FOR YOUR CLICK')
-    })
+function navBtn() {
+  const navBtn = document.getElementById("nav_btn");
+  navBtn.addEventListener("click", () => {
+    alert("😊 CONGRATULATION A TREE PLANTED FOR YOUR CLICK");
+  });
 }
-navBtn()
+navBtn();
 
-function bannerBtn (){
-    const bannerBtn = document.getElementById('banner_btn');
-    bannerBtn.addEventListener('click',()=>{
-        alert(' You Involved Successfully 👏')
-    })
+function bannerBtn() {
+  const bannerBtn = document.getElementById("banner_btn");
+  bannerBtn.addEventListener("click", () => {
+    alert(" You Involved Successfully 👏");
+  });
 }
-bannerBtn()
+bannerBtn();

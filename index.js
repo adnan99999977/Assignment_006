@@ -166,7 +166,7 @@ const addToCartBtn = (info) => {
 
   const createNewCart = document.createElement("div");
   createNewCart.innerHTML = `
-         <div  class="cart_card p-4 lg:p-2 rounded-sm  flex justify-between items-center mb-4 w-[300px] lg:w-[200px] m-auto bg-[rgba(240,253,244,1)] text-[#474646]">
+         <div  class="cart_card p-4 lg:p-2 rounded-sm  flex justify-between items-center mb-4 w-[260px] lg:w-[200px] m-auto bg-[rgba(240,253,244,1)] text-[#474646]">
                <div class="info">
                 <p class="font-bold">${info.name}</p>
                 <p>${info.price} x 1</p>
